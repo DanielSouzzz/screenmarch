@@ -1,6 +1,12 @@
+package br.com.alura.screenmatch;
+
+import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,5 +42,28 @@ public class Main {
         calculadora.inclui(outroFilme);
         System.out.println(calculadora.getTempoTotal());
 
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(meuFilme);
+
+        Episodio episodio = new Episodio();
+        episodio.setNome_ep("Piloto");
+        episodio.setNumero_ep(1);
+        episodio.setSerie(lost);
+        episodio.setTotalVisualizacoes(300);
+        filtro.filtra(episodio);
+
+        Filme filmeDaCaroline = new Filme();
+        filmeDaCaroline.setNome("Todos menos você");
+        filmeDaCaroline.setDuracaoEmMinutos(103);
+        filmeDaCaroline.setAnoDeLancamento(2023);
+        filmeDaCaroline.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeDaCaroline);
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outroFilme);
+        System.out.println("\nTamanho da lista: "+ listaDeFilmes.size());
+        System.out.println("O filme favorito da minha namorada é: " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
     }
 }
