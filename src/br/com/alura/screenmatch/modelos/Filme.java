@@ -5,8 +5,8 @@ import br.com.alura.screenmatch.calculos.Classifica;
 public class Filme extends Titulo implements Classifica {
     private String diretor;
 
-    public Filme(String nome) {
-        this.setNome(nome); // construtor que atribui o nome do filme na incialização do objeto
+    public Filme(String nome, int anoDeLancamento) {
+        super(nome, anoDeLancamento); // construtor
     }
 
     public String getDiretor() {

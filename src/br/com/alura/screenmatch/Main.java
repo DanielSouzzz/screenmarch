@@ -10,9 +10,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme("O poderoso Chefão");
-        //meuFilme.setNome("O poderoso Chefão");
-        meuFilme.setAnoDeLancamento(1972);
+        Filme meuFilme = new Filme("O poderoso Chefão", 1973);
         meuFilme.setDuracaoEmMinutos(177);
         System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
@@ -20,22 +18,16 @@ public class Main {
         meuFilme.avalia(8);
         meuFilme.avalia(7);
         meuFilme.avalia(8.3);
-        // System.out.println(meuFilme.somaDasAvaliacoes);
-        // System.out.println(meuFilme.totalDeAvaliacoes);
         System.out.println(meuFilme.pegaMedia());
 
-        Serie lost = new Serie();
-        lost.setNome("lost");
-        lost.setAnoDeLancamento(2000);
+        Serie lost = new Serie("Lost",2000);
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
         lost.setMinutosPorEpisodio(50);
         System.out.println("Tempo de duração da maratona Lost " + lost.getDuracaoEmMinutos());
 
-        Filme outroFilme = new Filme("Avatar");
-        //outroFilme.setNome("Avatar");
-        outroFilme.setAnoDeLancamento(2023);
+        Filme outroFilme = new Filme("Avatar", 2023);
         outroFilme.setDuracaoEmMinutos(200);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -52,9 +44,7 @@ public class Main {
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
 
-        Filme filmeDaCaroline = new Filme("Todos menos você");
-        //filmeDaCaroline.setNome("Todos menos você");
-        filmeDaCaroline.setDuracaoEmMinutos(103);
+        Filme filmeDaCaroline = new Filme("Todos menos você", 2023);
         filmeDaCaroline.setAnoDeLancamento(2023);
         filmeDaCaroline.avalia(10);
 
