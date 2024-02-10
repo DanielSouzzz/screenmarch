@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch;
+package br.com.alura.screenmatch.principal;
 
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
@@ -22,7 +22,7 @@ public class Main {
 
         Serie lost = new Serie("Lost",2000);
         lost.exibeFichaTecnica();
-        lost.setTemporadas(10);
+        lost.setTemporadas(10); 
         lost.setEpisodiosPorTemporada(10);
         lost.setMinutosPorEpisodio(50);
         System.out.println("Tempo de duração da maratona Lost " + lost.getDuracaoEmMinutos());
