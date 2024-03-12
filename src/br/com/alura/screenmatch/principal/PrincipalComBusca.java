@@ -1,9 +1,9 @@
 package br.com.alura.screenmatch.principal;
 
+import br.com.alura.screenmatch.excecao.ErroDeConversaoDeAnoException;
 import br.com.alura.screenmatch.modelos.Titulo;
 import br.com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
@@ -19,7 +19,8 @@ public class PrincipalComBusca {
         System.out.println("Digite o nome do filme: ");
         var busca = input.next();
 
-        String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=971786e5";
+        try {
+        String endereco = "http://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apikey=971786e5";
 
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
@@ -37,15 +38,19 @@ public class PrincipalComBusca {
         TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class); // convertendo json em objeto
         System.out.println(meuTituloOmdb);
 
-        try {
+        //try {
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
             System.out.println("Título já convertido");
             System.out.println(meuTitulo);
-        } catch (NumberFormatException e){
-            System.out.println("ERROR");
+        } catch (NumberFormatException e) {
+            System.out.println("Formáto inválido:");
             System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e){
+                System.out.println("Algum erro de argumento na busca");
+        } catch (ErroDeConversaoDeAnoException e){
+            System.out.println(e.getMensagem());
         }
-        System.out.println("Sucesso!");
+        System.out.println("O programa finalizou corretamente! ");
     }
 }
 
